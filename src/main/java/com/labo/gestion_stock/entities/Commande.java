@@ -1,6 +1,7 @@
 package com.labo.gestion_stock.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,11 @@ public class Commande {
     @NotNull
     private String numeroCommande;
 
-    @OneToMany(mappedBy = "commande",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "commande",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private List<ProductCommande> commandes;
+
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private User user;
 
 }

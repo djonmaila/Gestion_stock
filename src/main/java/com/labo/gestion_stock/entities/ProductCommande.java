@@ -18,6 +18,7 @@ import java.time.LocalTime;
 public class ProductCommande {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private int qteCommande;
